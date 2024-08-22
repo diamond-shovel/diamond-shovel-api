@@ -1,0 +1,12 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - python3 setup.py bdist_wheel
+  artifacts:
+    paths:
+      - dist/*.whl
