@@ -5,7 +5,7 @@ class TaskContext:
     ...
 
 class TaskPipeline:
-    def add(self, worker_id: str, worker: Callable[[TaskContext], None]):
+    def add(self, scope: str, worker_id: str, worker: Callable[[TaskContext], None]):
         ...
 
     def insert_before(self, before_id: str, worker_id: str, worker: Callable[[TaskContext], None]):
