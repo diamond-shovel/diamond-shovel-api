@@ -1,1 +1,3 @@
-from plugins import PluginInitContext
+from .plugins import PluginInitContext
+
+__all__ = ["events"]
