@@ -12,3 +12,6 @@ class BinaryManager:
 
     def clear_outs_folder(self):
         ...
+
+    def check_binary(self, name: str) -> bool:
+        ...
