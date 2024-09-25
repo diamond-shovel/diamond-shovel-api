@@ -1,3 +1,3 @@
-# Shovel API
+# Diamond Shovel API
 
-For internal plugin development. Going to be built as wheel
+For plugin development. Going to be built as wheel.
