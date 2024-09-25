@@ -11,6 +11,9 @@ build:
     - twine upload dist/*
     - rm -rf dist
     - python3 setup.py bdist_wheel
+  tags:
+    - shovel-api
+
   artifacts:
     paths:
       - dist/*.whl
