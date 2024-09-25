@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="diamond-shovel-api",
-    version="0.0.1-SNAPSHOT",
+    version="0.0.2",
     license="AGPL-3.0",
     author="Diamond Shovel Development Team",
     author_email="diamondshovel@cyberspike.top",
