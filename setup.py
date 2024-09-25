@@ -1,11 +1,24 @@
 import setuptools
+import subprocess
+import re
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+try:
+    process = subprocess.Popen(["git", "describe", "--tags"], stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+    version = output.decode("utf-8").strip()
+    version_strict = re.match(r"^\d+\.\d+\.\d+$", version)
+    if not version_strict:
+        version = re.match(r"(\d+\.\d+\.\d+)-\d+-g\w+$", version).group(1)
+except Exception as e:
+    version = "0.0.0"
+
 setuptools.setup(
     name="diamond-shovel-api",
-    version="0.0.2",
+    version=version,
     license="AGPL-3.0",
     author="Diamond Shovel Development Team",
     author_email="diamondshovel@cyberspike.top",
