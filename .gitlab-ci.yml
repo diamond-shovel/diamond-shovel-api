@@ -1,5 +1,6 @@
 stages:
   - build
+  - publish
 
 build:
   stage: build
@@ -7,13 +8,33 @@ build:
     - python3 -m venv venv
     - source venv/bin/activate
     - pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple -r requirements.txt
-    - python3 setup.py sdist
-    - twine upload dist/*
-    - rm -rf dist
     - python3 setup.py bdist_wheel
+  after_script:
+    - deactivate
+    - rm -rf venv
+    - rm -rf build
+    - rm -rf dist
+    - rm -rf diamond_shovel_api.egg-info
   tags:
     - shovel-api
-
   artifacts:
     paths:
       - dist/*.whl
+publish:
+  stage: publish
+  script:
+    - source venv/bin/activate
+    - pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple -r requirements.txt
+    - python3 setup.py sdist
+    - twine upload dist/*
+  after_script:
+    - deactivate
+    - rm -rf venv
+    - rm -rf build
+    - rm -rf dist
+    - rm -rf diamond_shovel_api.egg-info
+  tags:
+    - shovel-api
+  conditions:
+    - changes:
+        - setup.py
