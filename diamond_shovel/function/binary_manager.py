@@ -1,3 +1,8 @@
+import io
+from contextlib import contextmanager
+from typing import Generator
+
+
 class BinaryManager:
     def get_out_path_by_name(self, name: str):
         ...
@@ -14,4 +19,8 @@ class BinaryManager:
         ...
 
     def check_binary(self, name: str) -> bool:
+        ...
+
+    @contextmanager
+    def open_file(self, name: str, file_name: str) -> Generator[io.IOBase, None, None]:
         ...
