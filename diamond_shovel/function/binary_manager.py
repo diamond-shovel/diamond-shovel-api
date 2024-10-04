@@ -1,13 +1,14 @@
 import io
+import pathlib
 from contextlib import contextmanager
 from typing import Generator
 
 
 class BinaryManager:
-    def get_out_path_by_name(self, name: str):
+    def get_out_path_by_name(self, name: str) -> pathlib.Path:
         ...
 
-    def register_binary_path(self, name: str, path: str):
+    def register_binary_path(self, name: str, path: str) -> None:
         ...
 
     def execute_binary(self, name: str, cmd_args: list[str], timeout: int,
