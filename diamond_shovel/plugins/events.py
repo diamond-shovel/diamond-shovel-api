@@ -1,6 +1,6 @@
 import configparser
 
-from diamond_shovel.function.task import TaskPipeline
+from diamond_shovel.function.task import WorkerPool
 
 
 class Event:
@@ -11,8 +11,8 @@ class DiamondShovelInitEvent(Event):
     daemon: bool
     ...
 
-class PipelineInitEvent(Event):
-    pipeline: TaskPipeline
+class WorkerPoolInitEvent(Event):
+    pool: WorkerPool
     ...
 
 def register_event(evt_class, handler):
