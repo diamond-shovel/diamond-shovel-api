@@ -5,7 +5,7 @@ from typing import Generator
 
 
 class BinaryManager:
-    def get_out_path_by_name(self, name: str) -> pathlib.Path:
+    def get_data_path_by_name(self, name: str) -> pathlib.Path:
         ...
 
     def register_binary_path(self, name: str, path: str) -> None:
